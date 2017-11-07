@@ -22,4 +22,4 @@ cp -R /opt/shiny-server/samples/sample-apps/hello ~/ShinyApps/
 ``
 
 
-You can check the output of the user data on the file /var/log/cloud-init-output.log
+You can check the output of the user data on the file **/var/log/cloud-init-output.log**
