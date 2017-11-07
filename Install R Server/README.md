@@ -21,4 +21,8 @@ sudo /opt/shiny-server/bin/deploy-example user-dirs
 cp -R /opt/shiny-server/samples/sample-apps/hello ~/ShinyApps/
 ```
 
+Finally you can check that it works using the following
+
+http://*YOU_IP*:3838/ec2-user/hello/
+
 You can check the output of the user data on the file **/var/log/cloud-init-output.log**
