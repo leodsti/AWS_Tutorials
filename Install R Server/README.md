@@ -11,9 +11,13 @@ The file *Script_User_Data.txt* contains the script needed to install at launch 
 * Shiny Server
 
 
+## User Data Output
+To see what has happened **at launch**, you can check the user data output in the following file:
+* **/var/log/cloud-init-output.log**
 
+##Configuring the Shiny Server
 Once the Server Shiny is set up, a little configuration is needed.
-Connect to the instance and launch the following command lines
+Connect to the instance and launch the following command lines:
 
 ```
 mkdir ~/ShinyApps
@@ -21,8 +25,6 @@ sudo /opt/shiny-server/bin/deploy-example user-dirs
 cp -R /opt/shiny-server/samples/sample-apps/hello ~/ShinyApps/
 ```
 
-Finally you can check that it works using the following
+Finally you can check that it works using the following:
 
 http://*YOU_IP*:3838/ec2-user/hello/
-
-You can check the output of the user data on the file **/var/log/cloud-init-output.log**
