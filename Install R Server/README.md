@@ -15,7 +15,7 @@ The file *Script_User_Data.txt* contains the script needed to install at launch 
 To see what has happened **at launch**, you can check the user data output in the following file:
 * **/var/log/cloud-init-output.log**
 
-##Configuring the Shiny Server
+## Configuring the Shiny Server
 Once the Server Shiny is set up, a little configuration is needed.
 Connect to the instance and launch the following command lines:
 
