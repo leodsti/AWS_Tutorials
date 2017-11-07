@@ -3,7 +3,7 @@
 
 [Inspired from this great article  great article](https://aws.amazon.com/blogs/big-data/running-r-on-aws/)
 
-1. Launching the instance
+## Launching the instance
 When launching an instance, use the *User Data* in *Script_User_Data.txt*.
 Be careful to configure the **Security Group**
 
@@ -16,11 +16,11 @@ The file *Script_User_Data.txt* contains the script needed to install at launch 
 * Shiny Server
 
 
-2. User Data Output
+## User Data Output
 To see what has happened **at launch**, you can check the user data output in the following file:
 * **/var/log/cloud-init-output.log**
 
-3. Configuring the Shiny Server
+## Configuring the Shiny Server
 Once the Server Shiny is set up, a little configuration is needed.
 Connect to the instance and launch the following command lines:
 
