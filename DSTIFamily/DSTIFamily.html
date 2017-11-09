@@ -23,6 +23,8 @@
 	<h1>WebcamJS Test Page</h1>
 	<h3>Demonstrates simple 320x240 capture &amp; display</h3>
 	
+	<p>{{firstname}}</p>
+	
 	<div id="my_camera"></div>
 	
 	<!-- Configure a few settings and attach camera -->
@@ -46,6 +48,8 @@
 	<script language="JavaScript">
 		var app = angular.module('myApp', []);
 		app.controller('customersCtrl', function($scope, $http) {
+			   
+			 $scope.firstname = "Are you from the DSTI Family?";  
 			   
 			$scope.sendSnap = function() {
 				console.log("LEO SOUQUET CALL");
