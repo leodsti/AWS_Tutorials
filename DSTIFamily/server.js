@@ -9,13 +9,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-     next();
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
-/*
+
 //Création
-var rekognition = new AWS.Rekognition({region: 'eu-west-1'});
+/*var rekognition = new AWS.Rekognition({region: 'eu-west-1'});
 var params = {
     CollectionId: "myphotos"
    };
@@ -32,7 +32,7 @@ var params = {
    rekognition.deleteCollection(params, function(err, data) {
      if (err) console.log(err, err.stack); // an error occurred
      else     console.log(data);           // successful response
-});*/
+}); */
 
 app.get('/', (request,response) => 
 {
@@ -59,17 +59,25 @@ app.post('/', (request,response) =>
           var params = {
             CollectionId: "myphotos", 
             FaceMatchThreshold: 95, 
-            Image: {
-             S3Object: {
-              Bucket: "node-sdk-sample-leosouquet", 
-              Name: "hello_world.jpg"
-             }
+            Image: 
+            {
+              S3Object: 
+              {
+                Bucket: "node-sdk-sample-leosouquet", 
+                Name: "hello_world.jpg"
+              }
             }, 
             MaxFaces: 1
            };
            rekognition.searchFacesByImage(params, function(err, data) {
-             if (err) console.log(err, err.stack); // an error occurred
-             else     console.log(data);           // successful response
+             if (err) {
+               console.log(err, err.stack); // an error occurred
+               response.send("ERROR");
+             }
+             else {
+               console.log(data);           // successful response
+               response.send("OKAY :D");
+             }
             });
       });
 })
@@ -104,7 +112,10 @@ app.post('/register', (request,response) =>
              }
             };
             rekognition.indexFaces(params, function(err, data) {
-              if (err) console.log(err, err.stack); // an error occurred
+              if (err) {
+                console.log(err, err.stack); // an error occurred
+                response.send("ERROR");
+              }
               else     console.log(data);           // successful response
          });
      });

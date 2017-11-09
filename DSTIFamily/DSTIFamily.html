@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>WebcamJS Test Page</title>
+	<title>lol Test Page</title>
 	<style type="text/css">
 		body { font-family: Helvetica, sans-serif; }
 		h2, h3 { margin-top:0; }
@@ -21,9 +21,8 @@
 	<div id="results">Your captured image will appear here...</div>
 	
 	<h1>WebcamJS Test Page</h1>
-	<h3>Demonstrates simple 320x240 capture &amp; display</h3>
-	
-	<p>{{dstifamily}}</p>
+	<h3>{{dstifamily}}</h3>
+
 	
 	<div id="my_camera"></div>
 	
@@ -49,15 +48,8 @@
 		var app = angular.module('myApp', []);
 		app.controller('customersCtrl', function($scope, $http) {
 			   
-			 $scope.dstifamily = "Are you from the DSTI Family?";  
+			$scope.dstifamily = "Are you from the DSTI Family?";  
 			   
-			$scope.sendSnap = function() {
-				console.log("LEO SOUQUET CALL");
-				$http.get("http://localhost:8080/").then(function(response) {
-        			console.log(response.data);
-				});
-			}
-
 			$scope.register = function() {
 				Webcam.snap(function(data_uri) {
 					// display results in page
@@ -68,8 +60,12 @@
 						method: "POST",
 						data: {"data":data_uri	}
     				}).then(function(response) {
-        				$scope.dstifamily = "ERREUR ::(";  
-    				});
+        				console.log(response.data);
+						$scope.dstifamily = response.data;  
+    				}, function(response){
+						console.log(response.data);
+						$scope.dstifamily = response.data;  
+					});
 					
 
 					document.getElementById('results').innerHTML = 
@@ -80,7 +76,6 @@
 				} );
 			}
 
-
 			$scope.take_snapshot = function() {
 				Webcam.snap(function(data_uri) {
 					// display results in page
@@ -90,9 +85,14 @@
         				url: "http://localhost:8080/",
 						method: "POST",
 						data: {"data":data_uri	}
-    				});
+    				}).then(function(response) {
+        				console.log(response.data);
+						$scope.dstifamily = response.data;  
+    				}, function(response){
+						console.log(response.data);
+						$scope.dstifamily = response.data;  
+					});
 					
-
 					document.getElementById('results').innerHTML = 
 						'<h2>Here is your image:</h2>' + 
 						'<img src="'+data_uri+'"/>';
