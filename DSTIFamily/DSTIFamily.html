@@ -23,7 +23,7 @@
 	<h1>WebcamJS Test Page</h1>
 	<h3>Demonstrates simple 320x240 capture &amp; display</h3>
 	
-	<p>{{firstname}}</p>
+	<p>{{dstifamily}}</p>
 	
 	<div id="my_camera"></div>
 	
@@ -49,7 +49,7 @@
 		var app = angular.module('myApp', []);
 		app.controller('customersCtrl', function($scope, $http) {
 			   
-			 $scope.firstname = "Are you from the DSTI Family?";  
+			 $scope.dstifamily = "Are you from the DSTI Family?";  
 			   
 			$scope.sendSnap = function() {
 				console.log("LEO SOUQUET CALL");
@@ -67,6 +67,8 @@
         				url: "http://localhost:8080/register/",
 						method: "POST",
 						data: {"data":data_uri	}
+    				}).then(function(response) {
+        				$scope.dstifamily = "ERREUR ::(";  
     				});
 					
 
